@@ -1,0 +1,35 @@
+{
+  "label": "roundrobin-delay-grpc",
+  "interface": "grpc",
+  "target": "localhost:10001",
+  "method": "GetCharacters",
+  "target_rate": 30,
+  "duration_s": 45,
+  "started_at": "2026-11-14T10:22:11.774Z",
+  "ended_at": "2026-11-14T10:22:56.882Z",
+  "elapsed_s": 45.1,
+  "requests_sent": 1350,
+  "achieved_rate": 29.93,
+  "successes": 1350,
+  "failures": 0,
+  "success_rate_pct": 100,
+  "client_p50_ms": 14.311,
+  "client_p95_ms": 112.972,
+  "client_p99_ms": 118.606,
+  "client_max_ms": 175.666,
+  "max_in_flight": 4,
+  "throttled_ticks": 0,
+  "status_counts": {
+    "OK": 1350
+  },
+  "replica_counts": {
+    "C": 450,
+    "A": 450,
+    "B": 450
+  },
+  "sample_trace_ids": [
+    "9b2246ad34a3266375e089f1baffe435",
+    "449a9a286a7570452099bdd68788875d",
+    "36133ed73043df241e4e6b1af7431ff6"
+  ]
+}

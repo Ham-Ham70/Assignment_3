@@ -1,0 +1,19 @@
+node_modules/
+*.log
+.env
+.DS_Store
+__pycache__/
+*.pyc
+
+# Exclude data volumes
+esdata/
+filebeat-data/
+prometheus-data/
+data/
+node_modules/
+__pycache__/
+esdata/
+prometheus-data/
+filebeat-data/
+*.zip
+*.mp4

@@ -1,0 +1,46 @@
+global:
+  scrape_interval: 5s
+  evaluation_interval: 15s
+
+scrape_configs:
+  # Each replica is scraped directly, not through Envoy. The `replica` external
+  # label is what turns per-replica panels into `sum by (replica)`.
+  - job_name: secret-identity
+    static_configs:
+      - targets: ["app-a:8000"]
+        labels:
+          replica: A
+      - targets: ["app-b:8000"]
+        labels:
+          replica: B
+      - targets: ["app-c:8000"]
+        labels:
+          replica: C
+
+  - job_name: secret-identity-grpc
+    static_configs:
+      - targets: ["app-a:9091"]
+        labels:
+          replica: A
+      - targets: ["app-b:9091"]
+        labels:
+          replica: B
+      - targets: ["app-c:9091"]
+        labels:
+          replica: C
+
+  # Envoy's own stats, straight off its admin port (never via the proxy route).
+  - job_name: envoy
+    metrics_path: /stats/prometheus
+    static_configs:
+      - targets: ["envoy:9901"]
+
+  - job_name: node
+    static_configs:
+      - targets: ["node-exporter:9100"]
+        labels:
+          machine: "docker-desktop-linux-vm"
+
+  - job_name: prometheus
+    static_configs:
+      - targets: ["localhost:9090"]

@@ -1,0 +1,205 @@
+# Secret Identity — Assignment 3 Envoy configuration (template).
+#
+# Do not edit envoy/envoy.yaml by hand: it is rendered from this template by
+#   node scripts/envoy-policy.js <policy> [--apply]
+#
+# Listeners
+#   10000  HTTP/1.1  -> cluster app_http   (REST API)
+#   10001  HTTP/2    -> cluster app_grpc   (gRPC, per-call routing)
+#   9901   admin     -> /stats/prometheus  (scraped directly by Prometheus)
+#
+# Access logs are JSON on stdout and are picked up by Filebeat. Every line
+# carries the trace id and the replica that actually served the request
+# (%RESP(x-replica-id)%), so a Kibana search by trace_id returns the Envoy
+# event next to the replica's own log line.
+
+admin:
+  address:
+    socket_address:
+      address: 0.0.0.0
+      port_value: 9901
+
+node:
+  id: envoy-lb
+  cluster: secret-identity
+
+static_resources:
+  listeners:
+    - name: http_listener
+      address:
+        socket_address:
+          address: 0.0.0.0
+          port_value: 10000
+      filter_chains:
+        - filters:
+            - name: envoy.filters.network.http_connection_manager
+              typed_config:
+                "@type": type.googleapis.com/envoy.extensions.filters.network.http_connection_manager.v3.HttpConnectionManager
+                stat_prefix: ingress_http
+                codec_type: AUTO
+                generate_request_id: true
+                use_remote_address: true
+                route_config:
+                  name: http_route
+                  virtual_hosts:
+                    - name: app
+                      domains: ["*"]
+                      routes:
+                        - match:
+                            prefix: "/"
+                          route:
+                            cluster: app_http
+                            timeout: 30s
+                http_filters:
+                  - name: envoy.filters.http.router
+                    typed_config:
+                      "@type": type.googleapis.com/envoy.extensions.filters.http.router.v3.Router
+                access_log:
+                  - name: envoy.access_loggers.stdout
+                    typed_config:
+                      "@type": type.googleapis.com/envoy.extensions.access_loggers.stream.v3.StdoutAccessLog
+                      log_format:
+                        json_format:
+                          envoy_start_time: "%START_TIME%"
+                          log_source: "envoy"
+                          api: "http"
+                          trace_id: "%REQ(x-trace-id)%"
+                          request_id: "%REQ(x-request-id)%"
+                          method: "%REQ(:METHOD)%"
+                          path: "%REQ(X-ENVOY-ORIGINAL-PATH?:PATH)%"
+                          protocol: "%PROTOCOL%"
+                          authority: "%REQ(:AUTHORITY)%"
+                          response_code: "%RESPONSE_CODE%"
+                          response_flags: "%RESPONSE_FLAGS%"
+                          duration_ms: "%DURATION%"
+                          upstream_host: "%UPSTREAM_HOST%"
+                          upstream_cluster: "%UPSTREAM_CLUSTER%"
+                          upstream_service_time_ms: "%RESP(x-envoy-upstream-service-time)%"
+                          replica: "%RESP(x-replica-id)%"
+                          bytes_received: "%BYTES_RECEIVED%"
+                          bytes_sent: "%BYTES_SENT%"
+                          client_agent: "%REQ(USER-AGENT)%"
+
+    - name: grpc_listener
+      address:
+        socket_address:
+          address: 0.0.0.0
+          port_value: 10001
+      filter_chains:
+        - filters:
+            - name: envoy.filters.network.http_connection_manager
+              typed_config:
+                "@type": type.googleapis.com/envoy.extensions.filters.network.http_connection_manager.v3.HttpConnectionManager
+                stat_prefix: ingress_grpc
+                # HTTP/2 so Envoy sees each gRPC call and can pick a replica
+                # per call instead of once per connection.
+                codec_type: AUTO
+                use_remote_address: true
+                route_config:
+                  name: grpc_route
+                  virtual_hosts:
+                    - name: app
+                      domains: ["*"]
+                      routes:
+                        - match:
+                            prefix: "/"
+                          route:
+                            cluster: app_grpc
+                            timeout: 0s
+                http_filters:
+                  - name: envoy.filters.http.router
+                    typed_config:
+                      "@type": type.googleapis.com/envoy.extensions.filters.http.router.v3.Router
+                access_log:
+                  - name: envoy.access_loggers.stdout
+                    typed_config:
+                      "@type": type.googleapis.com/envoy.extensions.access_loggers.stream.v3.StdoutAccessLog
+                      log_format:
+                        json_format:
+                          envoy_start_time: "%START_TIME%"
+                          log_source: "envoy"
+                          api: "grpc"
+                          trace_id: "%REQ(x-trace-id)%"
+                          request_id: "%REQ(x-request-id)%"
+                          method: "%REQ(:METHOD)%"
+                          path: "%REQ(X-ENVOY-ORIGINAL-PATH?:PATH)%"
+                          protocol: "%PROTOCOL%"
+                          authority: "%REQ(:AUTHORITY)%"
+                          response_code: "%RESPONSE_CODE%"
+                          grpc_status: "%GRPC_STATUS%"
+                          response_flags: "%RESPONSE_FLAGS%"
+                          duration_ms: "%DURATION%"
+                          upstream_host: "%UPSTREAM_HOST%"
+                          upstream_cluster: "%UPSTREAM_CLUSTER%"
+                          upstream_service_time_ms: "%RESP(x-envoy-upstream-service-time)%"
+                          replica: "%RESP(x-replica-id)%"
+                          bytes_received: "%BYTES_RECEIVED%"
+                          bytes_sent: "%BYTES_SENT%"
+
+  clusters:
+    # Default policies resolve the replica hostnames with STRICT_DNS so the
+    # config survives container IP changes. The Part D `healthchecks` policy
+    # renders STATIC endpoints instead, so a stopped replica stays in the
+    # cluster and is ejected by the active health check rather than by DNS.
+    - name: app_http
+      type: STRICT_DNS
+      dns_lookup_family: V4_ONLY
+      connect_timeout: 1s
+      lb_policy: ROUND_ROBIN
+      load_assignment:
+        cluster_name: app_http
+        endpoints:
+          - lb_endpoints:
+              - endpoint:
+                  address:
+                    socket_address:
+                      address: app-a
+                      port_value: 8000
+                load_balancing_weight: 1
+              - endpoint:
+                  address:
+                    socket_address:
+                      address: app-b
+                      port_value: 8000
+                load_balancing_weight: 1
+              - endpoint:
+                  address:
+                    socket_address:
+                      address: app-c
+                      port_value: 8000
+                load_balancing_weight: 1
+
+
+    - name: app_grpc
+      type: STRICT_DNS
+      dns_lookup_family: V4_ONLY
+      connect_timeout: 1s
+      lb_policy: ROUND_ROBIN
+      typed_extension_protocol_options:
+        envoy.extensions.upstreams.http.v3.HttpProtocolOptions:
+          "@type": type.googleapis.com/envoy.extensions.upstreams.http.v3.HttpProtocolOptions
+          explicit_http_config:
+            http2_protocol_options: {}
+      load_assignment:
+        cluster_name: app_grpc
+        endpoints:
+          - lb_endpoints:
+              - endpoint:
+                  address:
+                    socket_address:
+                      address: app-a
+                      port_value: 50051
+                load_balancing_weight: 1
+              - endpoint:
+                  address:
+                    socket_address:
+                      address: app-b
+                      port_value: 50051
+                load_balancing_weight: 1
+              - endpoint:
+                  address:
+                    socket_address:
+                      address: app-c
+                      port_value: 50051
+                load_balancing_weight: 1
+

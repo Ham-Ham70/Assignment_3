@@ -1,0 +1,35 @@
+{
+  "label": "roundrobin-delay-grpc",
+  "interface": "grpc",
+  "window_min": 1,
+  "collected_at": "2026-11-14T10:23:05.121Z",
+  "grpc": {
+    "calls": {
+      "A": 475.2,
+      "B": 460.1,
+      "C": 464.1
+    },
+    "total": 1399.4,
+    "share_pct": {
+      "A": 34,
+      "B": 32.9,
+      "C": 33.2
+    },
+    "p50_ms": {
+      "A": 0.5,
+      "B": 166.656,
+      "C": 0.501
+    },
+    "p95_ms": {
+      "A": 0.95,
+      "B": 241.666,
+      "C": 0.952
+    },
+    "active_now": {
+      "A": 0,
+      "B": 0,
+      "C": 0
+    },
+    "errors_by_code": {}
+  }
+}

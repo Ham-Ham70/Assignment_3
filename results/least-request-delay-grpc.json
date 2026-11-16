@@ -1,0 +1,35 @@
+{
+  "label": "least-request-delay-grpc",
+  "interface": "grpc",
+  "target": "localhost:10001",
+  "method": "GetCharacters",
+  "target_rate": 30,
+  "duration_s": 45,
+  "started_at": "2026-11-14T10:25:06.670Z",
+  "ended_at": "2026-11-14T10:25:51.776Z",
+  "elapsed_s": 45.1,
+  "requests_sent": 1350,
+  "achieved_rate": 29.93,
+  "successes": 1350,
+  "failures": 0,
+  "success_rate_pct": 100,
+  "client_p50_ms": 11.201,
+  "client_p95_ms": 113.399,
+  "client_p99_ms": 127.838,
+  "client_max_ms": 192.296,
+  "max_in_flight": 4,
+  "throttled_ticks": 0,
+  "status_counts": {
+    "OK": 1350
+  },
+  "replica_counts": {
+    "C": 520,
+    "A": 555,
+    "B": 275
+  },
+  "sample_trace_ids": [
+    "da3f7c4054c39642771a189b64cc8c32",
+    "050bcd39a270cb07a8521b488391d2bd",
+    "3ffa86624a4c7d7a063365756646b1b7"
+  ]
+}

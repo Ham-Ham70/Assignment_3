@@ -1,0 +1,35 @@
+{
+  "label": "part-c-grpc",
+  "interface": "grpc",
+  "target": "localhost:10001",
+  "method": "GetCharacters",
+  "target_rate": 40,
+  "duration_s": 45,
+  "started_at": "2026-11-14T09:42:59.122Z",
+  "ended_at": "2026-11-14T09:43:44.142Z",
+  "elapsed_s": 45.02,
+  "requests_sent": 1800,
+  "achieved_rate": 39.99,
+  "successes": 1800,
+  "failures": 0,
+  "success_rate_pct": 100,
+  "client_p50_ms": 8.875,
+  "client_p95_ms": 28.221,
+  "client_p99_ms": 45.095,
+  "client_max_ms": 56.246,
+  "max_in_flight": 3,
+  "throttled_ticks": 0,
+  "status_counts": {
+    "OK": 1800
+  },
+  "replica_counts": {
+    "A": 600,
+    "B": 600,
+    "C": 600
+  },
+  "sample_trace_ids": [
+    "79cadeaf6270e03a5db34886382a1508",
+    "0b4cf73e2f522edd4778712e64849e16",
+    "0fadbc49643a998d093eb701b6438b6b"
+  ]
+}

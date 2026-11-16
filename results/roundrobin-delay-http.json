@@ -1,0 +1,35 @@
+{
+  "label": "roundrobin-delay-http",
+  "interface": "http",
+  "url": "http://localhost:10000/api/characters",
+  "target_rate": 30,
+  "duration_s": 45,
+  "started_at": "2026-11-14T10:21:17.946Z",
+  "ended_at": "2026-11-14T10:22:02.966Z",
+  "elapsed_s": 45.01,
+  "requests_sent": 1350,
+  "achieved_rate": 29.99,
+  "successes": 1350,
+  "failures": 0,
+  "success_rate_pct": 100,
+  "client_p50_ms": 7.909,
+  "client_p95_ms": 110.507,
+  "client_p99_ms": 113.24,
+  "client_max_ms": 159.97,
+  "max_in_flight": 5,
+  "throttled_ticks": 0,
+  "status_counts": {
+    "200": 1350
+  },
+  "replica_counts": {
+    "A": 450,
+    "C": 451,
+    "B": 449
+  },
+  "error_counts": {},
+  "sample_trace_ids": [
+    "31abc02b7c268f32b8e98979e1481b3e",
+    "a07c629a3e5b1728e99c62265e149662",
+    "2404adc73cbc5e7200cd94faaf36cebe"
+  ]
+}

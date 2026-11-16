@@ -1,0 +1,1530 @@
+{
+  "label": "healthcheck",
+  "policy": "healthchecks",
+  "rate": 30,
+  "total_s": 75,
+  "stop_at_s": 25,
+  "restart_at_s": 50,
+  "health_check": {
+    "type": "http_health_check /api/health (HTTP cluster), tcp_health_check (gRPC cluster)",
+    "interval": "2s",
+    "no_traffic_interval": "2s",
+    "unhealthy_interval": "2s",
+    "timeout": "1s",
+    "unhealthy_threshold": 3,
+    "healthy_threshold": 2,
+    "endpoints": "STATIC (IPs pinned at render time)"
+  },
+  "b_down_at_s": 28.5,
+  "b_up_at_s": 50.2,
+  "ejected_at_s": 35.7,
+  "ejection_delay_from_cmd_s": 10.7,
+  "ejection_delay_s": 7.2,
+  "readmitted_at_s": 55.6,
+  "readmission_delay_s": 5.6,
+  "client": {
+    "sent": 2250,
+    "successes": 2176,
+    "failures": 74,
+    "success_rate_pct": 96.71,
+    "client_p50_ms": 7.268,
+    "client_p95_ms": 12.062,
+    "client_p99_ms": 802.332,
+    "status_counts": {
+      "200": 2176,
+      "503": 74
+    },
+    "replica_counts": {
+      "A": 846,
+      "B": 486,
+      "C": 844,
+      "-": 74
+    },
+    "first_failure_s": 28,
+    "last_failure_s": 36,
+    "failure_window_s": 9,
+    "replica_by_phase": {
+      "baseline": {
+        "A": 250,
+        "B": 250,
+        "C": 250
+      },
+      "down": {
+        "B": 32,
+        "C": 321,
+        "A": 323
+      },
+      "recovery": {
+        "A": 273,
+        "C": 273,
+        "B": 204
+      }
+    }
+  },
+  "timeline": [
+    {
+      "t": 0,
+      "phase": "baseline",
+      "b_container": "running",
+      "b_http_status": "HEALTHY",
+      "b_http_timeout": false,
+      "b_grpc_status": "HEALTHY",
+      "health_http": {
+        "A": "HEALTHY",
+        "B": "HEALTHY",
+        "C": "HEALTHY"
+      },
+      "hc_attempt": 9,
+      "hc_failure": 0,
+      "hc_network_failure": 0,
+      "hc_success": 9,
+      "upstream_rq_total": 0,
+      "upstream_rq_5xx": null,
+      "rate": {
+        "A": 0,
+        "B": 0,
+        "C": 0
+      }
+    },
+    {
+      "t": 1.1,
+      "phase": "baseline",
+      "b_container": "running",
+      "b_http_status": "HEALTHY",
+      "b_http_timeout": false,
+      "b_grpc_status": "HEALTHY",
+      "health_http": {
+        "A": "HEALTHY",
+        "B": "HEALTHY",
+        "C": "HEALTHY"
+      },
+      "hc_attempt": 12,
+      "hc_failure": 0,
+      "hc_network_failure": 0,
+      "hc_success": 12,
+      "upstream_rq_total": 33,
+      "upstream_rq_5xx": null,
+      "rate": {
+        "A": 0,
+        "B": 0,
+        "C": 0.07
+      }
+    },
+    {
+      "t": 2.4,
+      "phase": "baseline",
+      "b_container": "running",
+      "b_http_status": "HEALTHY",
+      "b_http_timeout": false,
+      "b_grpc_status": "HEALTHY",
+      "health_http": {
+        "A": "HEALTHY",
+        "B": "HEALTHY",
+        "C": "HEALTHY"
+      },
+      "hc_attempt": 12,
+      "hc_failure": 0,
+      "hc_network_failure": 0,
+      "hc_success": 12,
+      "upstream_rq_total": 70,
+      "upstream_rq_5xx": null,
+      "rate": {
+        "A": 0,
+        "B": 0,
+        "C": 0.07
+      }
+    },
+    {
+      "t": 3.6,
+      "phase": "baseline",
+      "b_container": "running",
+      "b_http_status": "HEALTHY",
+      "b_http_timeout": false,
+      "b_grpc_status": "HEALTHY",
+      "health_http": {
+        "A": "HEALTHY",
+        "B": "HEALTHY",
+        "C": "HEALTHY"
+      },
+      "hc_attempt": 15,
+      "hc_failure": 0,
+      "hc_network_failure": 0,
+      "hc_success": 15,
+      "upstream_rq_total": 107,
+      "upstream_rq_5xx": null,
+      "rate": {
+        "A": 2.33,
+        "B": 0,
+        "C": 0.07
+      }
+    },
+    {
+      "t": 4.9,
+      "phase": "baseline",
+      "b_container": "running",
+      "b_http_status": "HEALTHY",
+      "b_http_timeout": false,
+      "b_grpc_status": "HEALTHY",
+      "health_http": {
+        "A": "HEALTHY",
+        "B": "HEALTHY",
+        "C": "HEALTHY"
+      },
+      "hc_attempt": 18,
+      "hc_failure": 0,
+      "hc_network_failure": 0,
+      "hc_success": 18,
+      "upstream_rq_total": 145,
+      "upstream_rq_5xx": null,
+      "rate": {
+        "A": 2.33,
+        "B": 0,
+        "C": 0.07
+      }
+    },
+    {
+      "t": 6.2,
+      "phase": "baseline",
+      "b_container": "running",
+      "b_http_status": "HEALTHY",
+      "b_http_timeout": false,
+      "b_grpc_status": "HEALTHY",
+      "health_http": {
+        "A": "HEALTHY",
+        "B": "HEALTHY",
+        "C": "HEALTHY"
+      },
+      "hc_attempt": 18,
+      "hc_failure": 0,
+      "hc_network_failure": 0,
+      "hc_success": 18,
+      "upstream_rq_total": 183,
+      "upstream_rq_5xx": null,
+      "rate": {
+        "A": 2.33,
+        "B": 3.27,
+        "C": 3.4
+      }
+    },
+    {
+      "t": 7.4,
+      "phase": "baseline",
+      "b_container": "running",
+      "b_http_status": "HEALTHY",
+      "b_http_timeout": false,
+      "b_grpc_status": "HEALTHY",
+      "health_http": {
+        "A": "HEALTHY",
+        "B": "HEALTHY",
+        "C": "HEALTHY"
+      },
+      "hc_attempt": 21,
+      "hc_failure": 0,
+      "hc_network_failure": 0,
+      "hc_success": 21,
+      "upstream_rq_total": 220,
+      "upstream_rq_5xx": null,
+      "rate": {
+        "A": 2.33,
+        "B": 3.27,
+        "C": 3.4
+      }
+    },
+    {
+      "t": 8.7,
+      "phase": "baseline",
+      "b_container": "running",
+      "b_http_status": "HEALTHY",
+      "b_http_timeout": false,
+      "b_grpc_status": "HEALTHY",
+      "health_http": {
+        "A": "HEALTHY",
+        "B": "HEALTHY",
+        "C": "HEALTHY"
+      },
+      "hc_attempt": 24,
+      "hc_failure": 0,
+      "hc_network_failure": 0,
+      "hc_success": 24,
+      "upstream_rq_total": 259,
+      "upstream_rq_5xx": null,
+      "rate": {
+        "A": 5.67,
+        "B": 3.27,
+        "C": 3.4
+      }
+    },
+    {
+      "t": 10,
+      "phase": "baseline",
+      "b_container": "running",
+      "b_http_status": "HEALTHY",
+      "b_http_timeout": false,
+      "b_grpc_status": "HEALTHY",
+      "health_http": {
+        "A": "HEALTHY",
+        "B": "HEALTHY",
+        "C": "HEALTHY"
+      },
+      "hc_attempt": 24,
+      "hc_failure": 0,
+      "hc_network_failure": 0,
+      "hc_success": 24,
+      "upstream_rq_total": 297,
+      "upstream_rq_5xx": null,
+      "rate": {
+        "A": 5.67,
+        "B": 6.6,
+        "C": 3.4
+      }
+    },
+    {
+      "t": 11.2,
+      "phase": "baseline",
+      "b_container": "running",
+      "b_http_status": "HEALTHY",
+      "b_http_timeout": false,
+      "b_grpc_status": "HEALTHY",
+      "health_http": {
+        "A": "HEALTHY",
+        "B": "HEALTHY",
+        "C": "HEALTHY"
+      },
+      "hc_attempt": 27,
+      "hc_failure": 0,
+      "hc_network_failure": 0,
+      "hc_success": 27,
+      "upstream_rq_total": 334,
+      "upstream_rq_5xx": null,
+      "rate": {
+        "A": 5.67,
+        "B": 6.6,
+        "C": 6.74
+      }
+    },
+    {
+      "t": 12.5,
+      "phase": "baseline",
+      "b_container": "running",
+      "b_http_status": "HEALTHY",
+      "b_http_timeout": false,
+      "b_grpc_status": "HEALTHY",
+      "health_http": {
+        "A": "HEALTHY",
+        "B": "HEALTHY",
+        "C": "HEALTHY"
+      },
+      "hc_attempt": 27,
+      "hc_failure": 0,
+      "hc_network_failure": 0,
+      "hc_success": 27,
+      "upstream_rq_total": 372,
+      "upstream_rq_5xx": null,
+      "rate": {
+        "A": 5.67,
+        "B": 6.6,
+        "C": 6.74
+      }
+    },
+    {
+      "t": 13.7,
+      "phase": "baseline",
+      "b_container": "running",
+      "b_http_status": "HEALTHY",
+      "b_http_timeout": false,
+      "b_grpc_status": "HEALTHY",
+      "health_http": {
+        "A": "HEALTHY",
+        "B": "HEALTHY",
+        "C": "HEALTHY"
+      },
+      "hc_attempt": 30,
+      "hc_failure": 0,
+      "hc_network_failure": 0,
+      "hc_success": 30,
+      "upstream_rq_total": 409,
+      "upstream_rq_5xx": null,
+      "rate": {
+        "A": 9,
+        "B": 6.6,
+        "C": 6.74
+      }
+    },
+    {
+      "t": 14.8,
+      "phase": "baseline",
+      "b_container": "running",
+      "b_http_status": "HEALTHY",
+      "b_http_timeout": false,
+      "b_grpc_status": "HEALTHY",
+      "health_http": {
+        "A": "HEALTHY",
+        "B": "HEALTHY",
+        "C": "HEALTHY"
+      },
+      "hc_attempt": 33,
+      "hc_failure": 0,
+      "hc_network_failure": 0,
+      "hc_success": 33,
+      "upstream_rq_total": 443,
+      "upstream_rq_5xx": null,
+      "rate": {
+        "A": 9,
+        "B": 6.6,
+        "C": 6.74
+      }
+    },
+    {
+      "t": 16.1,
+      "phase": "baseline",
+      "b_container": "running",
+      "b_http_status": "HEALTHY",
+      "b_http_timeout": false,
+      "b_grpc_status": "HEALTHY",
+      "health_http": {
+        "A": "HEALTHY",
+        "B": "HEALTHY",
+        "C": "HEALTHY"
+      },
+      "hc_attempt": 33,
+      "hc_failure": 0,
+      "hc_network_failure": 0,
+      "hc_success": 33,
+      "upstream_rq_total": 481,
+      "upstream_rq_5xx": null,
+      "rate": {
+        "A": 9,
+        "B": 9.93,
+        "C": 10
+      }
+    },
+    {
+      "t": 17.2,
+      "phase": "baseline",
+      "b_container": "running",
+      "b_http_status": "HEALTHY",
+      "b_http_timeout": false,
+      "b_grpc_status": "HEALTHY",
+      "health_http": {
+        "A": "HEALTHY",
+        "B": "HEALTHY",
+        "C": "HEALTHY"
+      },
+      "hc_attempt": 36,
+      "hc_failure": 0,
+      "hc_network_failure": 0,
+      "hc_success": 36,
+      "upstream_rq_total": 514,
+      "upstream_rq_5xx": null,
+      "rate": {
+        "A": 9,
+        "B": 9.93,
+        "C": 10
+      }
+    },
+    {
+      "t": 18.5,
+      "phase": "baseline",
+      "b_container": "running",
+      "b_http_status": "HEALTHY",
+      "b_http_timeout": false,
+      "b_grpc_status": "HEALTHY",
+      "health_http": {
+        "A": "HEALTHY",
+        "B": "HEALTHY",
+        "C": "HEALTHY"
+      },
+      "hc_attempt": 36,
+      "hc_failure": 0,
+      "hc_network_failure": 0,
+      "hc_success": 36,
+      "upstream_rq_total": 552,
+      "upstream_rq_5xx": null,
+      "rate": {
+        "A": 9,
+        "B": 9.93,
+        "C": 10
+      }
+    },
+    {
+      "t": 19.7,
+      "phase": "baseline",
+      "b_container": "running",
+      "b_http_status": "HEALTHY",
+      "b_http_timeout": false,
+      "b_grpc_status": "HEALTHY",
+      "health_http": {
+        "A": "HEALTHY",
+        "B": "HEALTHY",
+        "C": "HEALTHY"
+      },
+      "hc_attempt": 39,
+      "hc_failure": 0,
+      "hc_network_failure": 0,
+      "hc_success": 39,
+      "upstream_rq_total": 590,
+      "upstream_rq_5xx": null,
+      "rate": {
+        "A": 10,
+        "B": 9.93,
+        "C": 10
+      }
+    },
+    {
+      "t": 21,
+      "phase": "baseline",
+      "b_container": "running",
+      "b_http_status": "HEALTHY",
+      "b_http_timeout": false,
+      "b_grpc_status": "HEALTHY",
+      "health_http": {
+        "A": "HEALTHY",
+        "B": "HEALTHY",
+        "C": "HEALTHY"
+      },
+      "hc_attempt": 42,
+      "hc_failure": 0,
+      "hc_network_failure": 0,
+      "hc_success": 42,
+      "upstream_rq_total": 628,
+      "upstream_rq_5xx": null,
+      "rate": {
+        "A": 10,
+        "B": 10,
+        "C": 10
+      }
+    },
+    {
+      "t": 22.2,
+      "phase": "baseline",
+      "b_container": "running",
+      "b_http_status": "HEALTHY",
+      "b_http_timeout": false,
+      "b_grpc_status": "HEALTHY",
+      "health_http": {
+        "A": "HEALTHY",
+        "B": "HEALTHY",
+        "C": "HEALTHY"
+      },
+      "hc_attempt": 42,
+      "hc_failure": 0,
+      "hc_network_failure": 0,
+      "hc_success": 42,
+      "upstream_rq_total": 665,
+      "upstream_rq_5xx": null,
+      "rate": {
+        "A": 10,
+        "B": 10,
+        "C": 10
+      }
+    },
+    {
+      "t": 23.5,
+      "phase": "baseline",
+      "b_container": "running",
+      "b_http_status": "HEALTHY",
+      "b_http_timeout": false,
+      "b_grpc_status": "HEALTHY",
+      "health_http": {
+        "A": "HEALTHY",
+        "B": "HEALTHY",
+        "C": "HEALTHY"
+      },
+      "hc_attempt": 45,
+      "hc_failure": 0,
+      "hc_network_failure": 0,
+      "hc_success": 45,
+      "upstream_rq_total": 702,
+      "upstream_rq_5xx": null,
+      "rate": {
+        "A": 10,
+        "B": 10,
+        "C": 10
+      }
+    },
+    {
+      "t": 24.7,
+      "phase": "baseline",
+      "b_container": "running",
+      "b_http_status": "HEALTHY",
+      "b_http_timeout": false,
+      "b_grpc_status": "HEALTHY",
+      "health_http": {
+        "A": "HEALTHY",
+        "B": "HEALTHY",
+        "C": "HEALTHY"
+      },
+      "hc_attempt": 48,
+      "hc_failure": 0,
+      "hc_network_failure": 0,
+      "hc_success": 48,
+      "upstream_rq_total": 739,
+      "upstream_rq_5xx": null,
+      "rate": {
+        "A": 10,
+        "B": 10,
+        "C": 10
+      }
+    },
+    {
+      "t": 25.9,
+      "phase": "down",
+      "b_container": "running",
+      "b_http_status": "HEALTHY",
+      "b_http_timeout": false,
+      "b_grpc_status": "HEALTHY",
+      "health_http": {
+        "A": "HEALTHY",
+        "B": "HEALTHY",
+        "C": "HEALTHY"
+      },
+      "hc_attempt": 48,
+      "hc_failure": 0,
+      "hc_network_failure": 0,
+      "hc_success": 48,
+      "upstream_rq_total": 777,
+      "upstream_rq_5xx": null,
+      "rate": {
+        "A": 10,
+        "B": 10,
+        "C": 10
+      }
+    },
+    {
+      "t": 27.2,
+      "phase": "down",
+      "b_container": "running",
+      "b_http_status": "HEALTHY",
+      "b_http_timeout": false,
+      "b_grpc_status": "HEALTHY",
+      "health_http": {
+        "A": "HEALTHY",
+        "B": "HEALTHY",
+        "C": "HEALTHY"
+      },
+      "hc_attempt": 51,
+      "hc_failure": 0,
+      "hc_network_failure": 0,
+      "hc_success": 51,
+      "upstream_rq_total": 815,
+      "upstream_rq_5xx": null,
+      "rate": {
+        "A": 10,
+        "B": 10,
+        "C": 10
+      }
+    },
+    {
+      "t": 28.5,
+      "phase": "down",
+      "b_container": "exited",
+      "b_http_status": "HEALTHY",
+      "b_http_timeout": false,
+      "b_grpc_status": "HEALTHY",
+      "health_http": {
+        "A": "HEALTHY",
+        "B": "HEALTHY",
+        "C": "HEALTHY"
+      },
+      "hc_attempt": 51,
+      "hc_failure": 0,
+      "hc_network_failure": 0,
+      "hc_success": 51,
+      "upstream_rq_total": 850,
+      "upstream_rq_5xx": 1,
+      "rate": {
+        "A": 10,
+        "B": 10,
+        "C": 10
+      }
+    },
+    {
+      "t": 29.7,
+      "phase": "down",
+      "b_container": "exited",
+      "b_http_status": "HEALTHY",
+      "b_http_timeout": false,
+      "b_grpc_status": "HEALTHY",
+      "health_http": {
+        "A": "HEALTHY",
+        "B": "HEALTHY",
+        "C": "HEALTHY"
+      },
+      "hc_attempt": 54,
+      "hc_failure": 1,
+      "hc_network_failure": 1,
+      "hc_success": 53,
+      "upstream_rq_total": 875,
+      "upstream_rq_5xx": 11,
+      "rate": {
+        "A": 10,
+        "B": 10,
+        "C": 10
+      }
+    },
+    {
+      "t": 31,
+      "phase": "down",
+      "b_container": "exited",
+      "b_http_status": "HEALTHY",
+      "b_http_timeout": false,
+      "b_grpc_status": "HEALTHY",
+      "health_http": {
+        "A": "HEALTHY",
+        "B": "HEALTHY",
+        "C": "HEALTHY"
+      },
+      "hc_attempt": 56,
+      "hc_failure": 1,
+      "hc_network_failure": 1,
+      "hc_success": 55,
+      "upstream_rq_total": 901,
+      "upstream_rq_5xx": 20,
+      "rate": {
+        "A": 10,
+        "B": 8.21,
+        "C": 9.93
+      }
+    },
+    {
+      "t": 32.1,
+      "phase": "down",
+      "b_container": "exited",
+      "b_http_status": "HEALTHY",
+      "b_http_timeout": false,
+      "b_grpc_status": "HEALTHY",
+      "health_http": {
+        "A": "HEALTHY",
+        "B": "HEALTHY",
+        "C": "HEALTHY"
+      },
+      "hc_attempt": 57,
+      "hc_failure": 1,
+      "hc_network_failure": 1,
+      "hc_success": 55,
+      "upstream_rq_total": 923,
+      "upstream_rq_5xx": 36,
+      "rate": {
+        "A": 10,
+        "B": 7.66,
+        "C": 9.93
+      }
+    },
+    {
+      "t": 33.3,
+      "phase": "down",
+      "b_container": "exited",
+      "b_http_status": "HEALTHY",
+      "b_http_timeout": false,
+      "b_grpc_status": "HEALTHY",
+      "health_http": {
+        "A": "HEALTHY",
+        "B": "HEALTHY",
+        "C": "HEALTHY"
+      },
+      "hc_attempt": 59,
+      "hc_failure": 2,
+      "hc_network_failure": 2,
+      "hc_success": 57,
+      "upstream_rq_total": 947,
+      "upstream_rq_5xx": 45,
+      "rate": {
+        "A": 10,
+        "B": 7.04,
+        "C": 9.93
+      }
+    },
+    {
+      "t": 34.6,
+      "phase": "down",
+      "b_container": "exited",
+      "b_http_status": "HEALTHY",
+      "b_http_timeout": false,
+      "b_grpc_status": "HEALTHY",
+      "health_http": {
+        "A": "HEALTHY",
+        "B": "HEALTHY",
+        "C": "HEALTHY"
+      },
+      "hc_attempt": 59,
+      "hc_failure": 2,
+      "hc_network_failure": 2,
+      "hc_success": 57,
+      "upstream_rq_total": 971,
+      "upstream_rq_5xx": 56,
+      "rate": {
+        "A": 10,
+        "B": 6.42,
+        "C": 9.93
+      }
+    },
+    {
+      "t": 35.7,
+      "phase": "down",
+      "b_container": "exited",
+      "b_http_status": "UNHEALTHY",
+      "b_http_timeout": true,
+      "b_grpc_status": "UNHEALTHY",
+      "health_http": {
+        "A": "HEALTHY",
+        "B": "UNHEALTHY",
+        "C": "HEALTHY"
+      },
+      "hc_attempt": 62,
+      "hc_failure": 3,
+      "hc_network_failure": 3,
+      "hc_success": 59,
+      "upstream_rq_total": 995,
+      "upstream_rq_5xx": 70,
+      "rate": {
+        "A": 10,
+        "B": 5.86,
+        "C": 9.94
+      }
+    },
+    {
+      "t": 36.8,
+      "phase": "down",
+      "b_container": "exited",
+      "b_http_status": "UNHEALTHY",
+      "b_http_timeout": true,
+      "b_grpc_status": "UNHEALTHY",
+      "health_http": {
+        "A": "HEALTHY",
+        "B": "UNHEALTHY",
+        "C": "HEALTHY"
+      },
+      "hc_attempt": 64,
+      "hc_failure": 3,
+      "hc_network_failure": 3,
+      "hc_success": 61,
+      "upstream_rq_total": 1028,
+      "upstream_rq_5xx": 74,
+      "rate": {
+        "A": 10,
+        "B": 5.31,
+        "C": 9.94
+      }
+    },
+    {
+      "t": 37.9,
+      "phase": "down",
+      "b_container": "exited",
+      "b_http_status": "UNHEALTHY",
+      "b_http_timeout": true,
+      "b_grpc_status": "UNHEALTHY",
+      "health_http": {
+        "A": "HEALTHY",
+        "B": "UNHEALTHY",
+        "C": "HEALTHY"
+      },
+      "hc_attempt": 65,
+      "hc_failure": 3,
+      "hc_network_failure": 3,
+      "hc_success": 61,
+      "upstream_rq_total": 1061,
+      "upstream_rq_5xx": 74,
+      "rate": {
+        "A": 10,
+        "B": 4.76,
+        "C": 9.94
+      }
+    },
+    {
+      "t": 39.1,
+      "phase": "down",
+      "b_container": "exited",
+      "b_http_status": "UNHEALTHY",
+      "b_http_timeout": true,
+      "b_grpc_status": "UNHEALTHY",
+      "health_http": {
+        "A": "HEALTHY",
+        "B": "UNHEALTHY",
+        "C": "HEALTHY"
+      },
+      "hc_attempt": 67,
+      "hc_failure": 4,
+      "hc_network_failure": 4,
+      "hc_success": 63,
+      "upstream_rq_total": 1098,
+      "upstream_rq_5xx": 74,
+      "rate": {
+        "A": 11.07,
+        "B": 4.14,
+        "C": 9.94
+      }
+    },
+    {
+      "t": 40.4,
+      "phase": "down",
+      "b_container": "exited",
+      "b_http_status": "UNHEALTHY",
+      "b_http_timeout": true,
+      "b_grpc_status": "UNHEALTHY",
+      "health_http": {
+        "A": "HEALTHY",
+        "B": "UNHEALTHY",
+        "C": "HEALTHY"
+      },
+      "hc_attempt": 67,
+      "hc_failure": 4,
+      "hc_network_failure": 4,
+      "hc_success": 63,
+      "upstream_rq_total": 1136,
+      "upstream_rq_5xx": 74,
+      "rate": {
+        "A": 11.07,
+        "B": 0,
+        "C": 11.4
+      }
+    },
+    {
+      "t": 41.6,
+      "phase": "down",
+      "b_container": "exited",
+      "b_http_status": "UNHEALTHY",
+      "b_http_timeout": true,
+      "b_grpc_status": "UNHEALTHY",
+      "health_http": {
+        "A": "HEALTHY",
+        "B": "UNHEALTHY",
+        "C": "HEALTHY"
+      },
+      "hc_attempt": 70,
+      "hc_failure": 4,
+      "hc_network_failure": 4,
+      "hc_success": 65,
+      "upstream_rq_total": 1173,
+      "upstream_rq_5xx": 74,
+      "rate": {
+        "A": 11.07,
+        "B": 0,
+        "C": 11.4
+      }
+    },
+    {
+      "t": 42.9,
+      "phase": "down",
+      "b_container": "exited",
+      "b_http_status": "UNHEALTHY",
+      "b_http_timeout": true,
+      "b_grpc_status": "UNHEALTHY",
+      "health_http": {
+        "A": "HEALTHY",
+        "B": "UNHEALTHY",
+        "C": "HEALTHY"
+      },
+      "hc_attempt": 72,
+      "hc_failure": 5,
+      "hc_network_failure": 5,
+      "hc_success": 67,
+      "upstream_rq_total": 1211,
+      "upstream_rq_5xx": 74,
+      "rate": {
+        "A": 11.07,
+        "B": 0,
+        "C": 11.4
+      }
+    },
+    {
+      "t": 44.1,
+      "phase": "down",
+      "b_container": "exited",
+      "b_http_status": "UNHEALTHY",
+      "b_http_timeout": true,
+      "b_grpc_status": "UNHEALTHY",
+      "health_http": {
+        "A": "HEALTHY",
+        "B": "UNHEALTHY",
+        "C": "HEALTHY"
+      },
+      "hc_attempt": 73,
+      "hc_failure": 5,
+      "hc_network_failure": 5,
+      "hc_success": 67,
+      "upstream_rq_total": 1248,
+      "upstream_rq_5xx": 74,
+      "rate": {
+        "A": 12.73,
+        "B": 0,
+        "C": 11.4
+      }
+    },
+    {
+      "t": 45.4,
+      "phase": "down",
+      "b_container": "exited",
+      "b_http_status": "UNHEALTHY",
+      "b_http_timeout": true,
+      "b_grpc_status": "UNHEALTHY",
+      "health_http": {
+        "A": "HEALTHY",
+        "B": "UNHEALTHY",
+        "C": "HEALTHY"
+      },
+      "hc_attempt": 75,
+      "hc_failure": 6,
+      "hc_network_failure": 6,
+      "hc_success": 69,
+      "upstream_rq_total": 1285,
+      "upstream_rq_5xx": 74,
+      "rate": {
+        "A": 12.73,
+        "B": 0,
+        "C": 13.13
+      }
+    },
+    {
+      "t": 46.6,
+      "phase": "down",
+      "b_container": "exited",
+      "b_http_status": "UNHEALTHY",
+      "b_http_timeout": true,
+      "b_grpc_status": "UNHEALTHY",
+      "health_http": {
+        "A": "HEALTHY",
+        "B": "UNHEALTHY",
+        "C": "HEALTHY"
+      },
+      "hc_attempt": 75,
+      "hc_failure": 6,
+      "hc_network_failure": 6,
+      "hc_success": 69,
+      "upstream_rq_total": 1322,
+      "upstream_rq_5xx": 74,
+      "rate": {
+        "A": 12.73,
+        "B": 0,
+        "C": 13.13
+      }
+    },
+    {
+      "t": 47.8,
+      "phase": "down",
+      "b_container": "exited",
+      "b_http_status": "UNHEALTHY",
+      "b_http_timeout": true,
+      "b_grpc_status": "UNHEALTHY",
+      "health_http": {
+        "A": "HEALTHY",
+        "B": "UNHEALTHY",
+        "C": "HEALTHY"
+      },
+      "hc_attempt": 78,
+      "hc_failure": 7,
+      "hc_network_failure": 7,
+      "hc_success": 71,
+      "upstream_rq_total": 1359,
+      "upstream_rq_5xx": 74,
+      "rate": {
+        "A": 12.73,
+        "B": 0,
+        "C": 13.13
+      }
+    },
+    {
+      "t": 48.9,
+      "phase": "down",
+      "b_container": "exited",
+      "b_http_status": "UNHEALTHY",
+      "b_http_timeout": true,
+      "b_grpc_status": "UNHEALTHY",
+      "health_http": {
+        "A": "HEALTHY",
+        "B": "UNHEALTHY",
+        "C": "HEALTHY"
+      },
+      "hc_attempt": 80,
+      "hc_failure": 7,
+      "hc_network_failure": 7,
+      "hc_success": 73,
+      "upstream_rq_total": 1393,
+      "upstream_rq_5xx": 74,
+      "rate": {
+        "A": 14.4,
+        "B": 0,
+        "C": 13.13
+      }
+    },
+    {
+      "t": 50.2,
+      "phase": "recovery",
+      "b_container": "running",
+      "b_http_status": "UNHEALTHY",
+      "b_http_timeout": true,
+      "b_grpc_status": "UNHEALTHY",
+      "health_http": {
+        "A": "HEALTHY",
+        "B": "UNHEALTHY",
+        "C": "HEALTHY"
+      },
+      "hc_attempt": 81,
+      "hc_failure": 7,
+      "hc_network_failure": 7,
+      "hc_success": 73,
+      "upstream_rq_total": 1430,
+      "upstream_rq_5xx": 74,
+      "rate": {
+        "A": 14.4,
+        "B": 0,
+        "C": 14.87
+      }
+    },
+    {
+      "t": 52,
+      "phase": "recovery",
+      "b_container": "running",
+      "b_http_status": "UNHEALTHY",
+      "b_http_timeout": true,
+      "b_grpc_status": "UNHEALTHY",
+      "health_http": {
+        "A": "HEALTHY",
+        "B": "UNHEALTHY",
+        "C": "HEALTHY"
+      },
+      "hc_attempt": 83,
+      "hc_failure": 8,
+      "hc_network_failure": 8,
+      "hc_success": 75,
+      "upstream_rq_total": 1483,
+      "upstream_rq_5xx": 74,
+      "rate": {
+        "A": 14.4,
+        "B": 0,
+        "C": 14.87
+      }
+    },
+    {
+      "t": 53.2,
+      "phase": "recovery",
+      "b_container": "running",
+      "b_http_status": "UNHEALTHY",
+      "b_http_timeout": true,
+      "b_grpc_status": "UNHEALTHY",
+      "health_http": {
+        "A": "HEALTHY",
+        "B": "UNHEALTHY",
+        "C": "HEALTHY"
+      },
+      "hc_attempt": 86,
+      "hc_failure": 8,
+      "hc_network_failure": 8,
+      "hc_success": 78,
+      "upstream_rq_total": 1521,
+      "upstream_rq_5xx": 74,
+      "rate": {
+        "A": 14.4,
+        "B": 0,
+        "C": 14.87
+      }
+    },
+    {
+      "t": 54.4,
+      "phase": "recovery",
+      "b_container": "running",
+      "b_http_status": "UNHEALTHY",
+      "b_http_timeout": true,
+      "b_grpc_status": "UNHEALTHY",
+      "health_http": {
+        "A": "HEALTHY",
+        "B": "UNHEALTHY",
+        "C": "HEALTHY"
+      },
+      "hc_attempt": 86,
+      "hc_failure": 8,
+      "hc_network_failure": 8,
+      "hc_success": 78,
+      "upstream_rq_total": 1555,
+      "upstream_rq_5xx": 74,
+      "rate": {
+        "A": 15,
+        "B": 0,
+        "C": 14.87
+      }
+    },
+    {
+      "t": 55.6,
+      "phase": "recovery",
+      "b_container": "running",
+      "b_http_status": "HEALTHY",
+      "b_http_timeout": false,
+      "b_grpc_status": "HEALTHY",
+      "health_http": {
+        "A": "HEALTHY",
+        "B": "HEALTHY",
+        "C": "HEALTHY"
+      },
+      "hc_attempt": 89,
+      "hc_failure": 8,
+      "hc_network_failure": 8,
+      "hc_success": 81,
+      "upstream_rq_total": 1592,
+      "upstream_rq_5xx": 74,
+      "rate": {
+        "A": 15,
+        "B": 0,
+        "C": 14.87
+      }
+    },
+    {
+      "t": 56.7,
+      "phase": "recovery",
+      "b_container": "running",
+      "b_http_status": "HEALTHY",
+      "b_http_timeout": false,
+      "b_grpc_status": "HEALTHY",
+      "health_http": {
+        "A": "HEALTHY",
+        "B": "HEALTHY",
+        "C": "HEALTHY"
+      },
+      "hc_attempt": 91,
+      "hc_failure": 8,
+      "hc_network_failure": 8,
+      "hc_success": 83,
+      "upstream_rq_total": 1626,
+      "upstream_rq_5xx": 74,
+      "rate": {
+        "A": 15,
+        "B": 0,
+        "C": 14.87
+      }
+    },
+    {
+      "t": 57.9,
+      "phase": "recovery",
+      "b_container": "running",
+      "b_http_status": "HEALTHY",
+      "b_http_timeout": false,
+      "b_grpc_status": "HEALTHY",
+      "health_http": {
+        "A": "HEALTHY",
+        "B": "HEALTHY",
+        "C": "HEALTHY"
+      },
+      "hc_attempt": 92,
+      "hc_failure": 8,
+      "hc_network_failure": 8,
+      "hc_success": 84,
+      "upstream_rq_total": 1662,
+      "upstream_rq_5xx": 74,
+      "rate": {
+        "A": 15,
+        "B": 0,
+        "C": 14.87
+      }
+    },
+    {
+      "t": 59.1,
+      "phase": "recovery",
+      "b_container": "running",
+      "b_http_status": "HEALTHY",
+      "b_http_timeout": false,
+      "b_grpc_status": "HEALTHY",
+      "health_http": {
+        "A": "HEALTHY",
+        "B": "HEALTHY",
+        "C": "HEALTHY"
+      },
+      "hc_attempt": 95,
+      "hc_failure": 8,
+      "hc_network_failure": 8,
+      "hc_success": 87,
+      "upstream_rq_total": 1698,
+      "upstream_rq_5xx": 74,
+      "rate": {
+        "A": 13.67,
+        "B": 0,
+        "C": 14.87
+      }
+    },
+    {
+      "t": 60.4,
+      "phase": "recovery",
+      "b_container": "running",
+      "b_http_status": "HEALTHY",
+      "b_http_timeout": false,
+      "b_grpc_status": "HEALTHY",
+      "health_http": {
+        "A": "HEALTHY",
+        "B": "HEALTHY",
+        "C": "HEALTHY"
+      },
+      "hc_attempt": 95,
+      "hc_failure": 8,
+      "hc_network_failure": 8,
+      "hc_success": 87,
+      "upstream_rq_total": 1736,
+      "upstream_rq_5xx": 74,
+      "rate": {
+        "A": 13.67,
+        "B": 2.85,
+        "C": 13.2
+      }
+    },
+    {
+      "t": 61.6,
+      "phase": "recovery",
+      "b_container": "running",
+      "b_http_status": "HEALTHY",
+      "b_http_timeout": false,
+      "b_grpc_status": "HEALTHY",
+      "health_http": {
+        "A": "HEALTHY",
+        "B": "HEALTHY",
+        "C": "HEALTHY"
+      },
+      "hc_attempt": 98,
+      "hc_failure": 8,
+      "hc_network_failure": 8,
+      "hc_success": 90,
+      "upstream_rq_total": 1773,
+      "upstream_rq_5xx": 74,
+      "rate": {
+        "A": 13.67,
+        "B": 3.47,
+        "C": 13.2
+      }
+    },
+    {
+      "t": 62.8,
+      "phase": "recovery",
+      "b_container": "running",
+      "b_http_status": "HEALTHY",
+      "b_http_timeout": false,
+      "b_grpc_status": "HEALTHY",
+      "health_http": {
+        "A": "HEALTHY",
+        "B": "HEALTHY",
+        "C": "HEALTHY"
+      },
+      "hc_attempt": 101,
+      "hc_failure": 8,
+      "hc_network_failure": 8,
+      "hc_success": 93,
+      "upstream_rq_total": 1809,
+      "upstream_rq_5xx": 74,
+      "rate": {
+        "A": 13.67,
+        "B": 4.06,
+        "C": 13.2
+      }
+    },
+    {
+      "t": 64.1,
+      "phase": "recovery",
+      "b_container": "running",
+      "b_http_status": "HEALTHY",
+      "b_http_timeout": false,
+      "b_grpc_status": "HEALTHY",
+      "health_http": {
+        "A": "HEALTHY",
+        "B": "HEALTHY",
+        "C": "HEALTHY"
+      },
+      "hc_attempt": 101,
+      "hc_failure": 8,
+      "hc_network_failure": 8,
+      "hc_success": 93,
+      "upstream_rq_total": 1846,
+      "upstream_rq_5xx": 74,
+      "rate": {
+        "A": 12,
+        "B": 4.68,
+        "C": 13.2
+      }
+    },
+    {
+      "t": 65.2,
+      "phase": "recovery",
+      "b_container": "running",
+      "b_http_status": "HEALTHY",
+      "b_http_timeout": false,
+      "b_grpc_status": "HEALTHY",
+      "health_http": {
+        "A": "HEALTHY",
+        "B": "HEALTHY",
+        "C": "HEALTHY"
+      },
+      "hc_attempt": 104,
+      "hc_failure": 8,
+      "hc_network_failure": 8,
+      "hc_success": 96,
+      "upstream_rq_total": 1880,
+      "upstream_rq_5xx": 74,
+      "rate": {
+        "A": 12,
+        "B": 5.25,
+        "C": 11.47
+      }
+    },
+    {
+      "t": 66.5,
+      "phase": "recovery",
+      "b_container": "running",
+      "b_http_status": "HEALTHY",
+      "b_http_timeout": false,
+      "b_grpc_status": "HEALTHY",
+      "health_http": {
+        "A": "HEALTHY",
+        "B": "HEALTHY",
+        "C": "HEALTHY"
+      },
+      "hc_attempt": 104,
+      "hc_failure": 8,
+      "hc_network_failure": 8,
+      "hc_success": 96,
+      "upstream_rq_total": 1918,
+      "upstream_rq_5xx": 74,
+      "rate": {
+        "A": 12,
+        "B": 5.87,
+        "C": 11.47
+      }
+    },
+    {
+      "t": 67.7,
+      "phase": "recovery",
+      "b_container": "running",
+      "b_http_status": "HEALTHY",
+      "b_http_timeout": false,
+      "b_grpc_status": "HEALTHY",
+      "health_http": {
+        "A": "HEALTHY",
+        "B": "HEALTHY",
+        "C": "HEALTHY"
+      },
+      "hc_attempt": 107,
+      "hc_failure": 8,
+      "hc_network_failure": 8,
+      "hc_success": 99,
+      "upstream_rq_total": 1955,
+      "upstream_rq_5xx": 74,
+      "rate": {
+        "A": 12,
+        "B": 6.5,
+        "C": 11.47
+      }
+    },
+    {
+      "t": 68.9,
+      "phase": "recovery",
+      "b_container": "running",
+      "b_http_status": "HEALTHY",
+      "b_http_timeout": false,
+      "b_grpc_status": "HEALTHY",
+      "health_http": {
+        "A": "HEALTHY",
+        "B": "HEALTHY",
+        "C": "HEALTHY"
+      },
+      "hc_attempt": 110,
+      "hc_failure": 8,
+      "hc_network_failure": 8,
+      "hc_success": 102,
+      "upstream_rq_total": 1991,
+      "upstream_rq_5xx": 74,
+      "rate": {
+        "A": 10.34,
+        "B": 7.09,
+        "C": 11.47
+      }
+    },
+    {
+      "t": 70.1,
+      "phase": "recovery",
+      "b_container": "running",
+      "b_http_status": "HEALTHY",
+      "b_http_timeout": false,
+      "b_grpc_status": "HEALTHY",
+      "health_http": {
+        "A": "HEALTHY",
+        "B": "HEALTHY",
+        "C": "HEALTHY"
+      },
+      "hc_attempt": 110,
+      "hc_failure": 8,
+      "hc_network_failure": 8,
+      "hc_success": 102,
+      "upstream_rq_total": 2028,
+      "upstream_rq_5xx": 74,
+      "rate": {
+        "A": 10.34,
+        "B": 7.71,
+        "C": 11.47
+      }
+    },
+    {
+      "t": 71.3,
+      "phase": "recovery",
+      "b_container": "running",
+      "b_http_status": "HEALTHY",
+      "b_http_timeout": false,
+      "b_grpc_status": "HEALTHY",
+      "health_http": {
+        "A": "HEALTHY",
+        "B": "HEALTHY",
+        "C": "HEALTHY"
+      },
+      "hc_attempt": 113,
+      "hc_failure": 8,
+      "hc_network_failure": 8,
+      "hc_success": 105,
+      "upstream_rq_total": 2065,
+      "upstream_rq_5xx": 74,
+      "rate": {
+        "A": 10.34,
+        "B": 8.32,
+        "C": 10
+      }
+    },
+    {
+      "t": 72.6,
+      "phase": "recovery",
+      "b_container": "running",
+      "b_http_status": "HEALTHY",
+      "b_http_timeout": false,
+      "b_grpc_status": "HEALTHY",
+      "health_http": {
+        "A": "HEALTHY",
+        "B": "HEALTHY",
+        "C": "HEALTHY"
+      },
+      "hc_attempt": 113,
+      "hc_failure": 8,
+      "hc_network_failure": 8,
+      "hc_success": 105,
+      "upstream_rq_total": 2101,
+      "upstream_rq_5xx": 74,
+      "rate": {
+        "A": 10.34,
+        "B": 8.92,
+        "C": 10
+      }
+    },
+    {
+      "t": 73.8,
+      "phase": "recovery",
+      "b_container": "running",
+      "b_http_status": "HEALTHY",
+      "b_http_timeout": false,
+      "b_grpc_status": "HEALTHY",
+      "health_http": {
+        "A": "HEALTHY",
+        "B": "HEALTHY",
+        "C": "HEALTHY"
+      },
+      "hc_attempt": 116,
+      "hc_failure": 8,
+      "hc_network_failure": 8,
+      "hc_success": 108,
+      "upstream_rq_total": 2139,
+      "upstream_rq_5xx": 74,
+      "rate": {
+        "A": 10,
+        "B": 9.55,
+        "C": 10
+      }
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "label": "part-a-grpc",
+  "interface": "grpc",
+  "target": "localhost:10001",
+  "method": "GetCharacters",
+  "target_rate": 40,
+  "duration_s": 45,
+  "started_at": "2026-11-14T09:41:01.480Z",
+  "ended_at": "2026-11-14T09:41:46.492Z",
+  "elapsed_s": 45.01,
+  "requests_sent": 1800,
+  "achieved_rate": 39.99,
+  "successes": 1800,
+  "failures": 0,
+  "success_rate_pct": 100,
+  "client_p50_ms": 8.742,
+  "client_p95_ms": 28.223,
+  "client_p99_ms": 46.184,
+  "client_max_ms": 62.648,
+  "max_in_flight": 3,
+  "throttled_ticks": 0,
+  "status_counts": {
+    "OK": 1800
+  },
+  "replica_counts": {
+    "A": 1800
+  },
+  "sample_trace_ids": [
+    "8d664a1f1c537e75568dce38a173841d",
+    "60717dd54e5f4ff05e752f431fd71c44",
+    "8b99592a18a05a75b7950cd656b9a814"
+  ]
+}

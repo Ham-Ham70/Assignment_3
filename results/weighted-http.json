@@ -1,0 +1,35 @@
+{
+  "label": "weighted-http",
+  "interface": "http",
+  "url": "http://localhost:10000/api/characters",
+  "target_rate": 40,
+  "duration_s": 45,
+  "started_at": "2026-11-14T09:43:59.188Z",
+  "ended_at": "2026-11-14T09:44:44.215Z",
+  "elapsed_s": 45.02,
+  "requests_sent": 1800,
+  "achieved_rate": 39.98,
+  "successes": 1800,
+  "failures": 0,
+  "success_rate_pct": 100,
+  "client_p50_ms": 8.282,
+  "client_p95_ms": 11.056,
+  "client_p99_ms": 16.446,
+  "client_max_ms": 184.491,
+  "max_in_flight": 7,
+  "throttled_ticks": 0,
+  "status_counts": {
+    "200": 1800
+  },
+  "replica_counts": {
+    "A": 901,
+    "B": 450,
+    "C": 449
+  },
+  "error_counts": {},
+  "sample_trace_ids": [
+    "f1591c3bc97c287e61f7a9b175315254",
+    "1fd578f9348ed3d1e8b5b0246103b281",
+    "67f458cabe6ab9bb5d5acc22997bdd81"
+  ]
+}
